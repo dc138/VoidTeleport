@@ -1,0 +1,7 @@
+name: VoidTeleport
+version: @version@
+description: An empty example plugin for Spigot with Gradle
+
+main: me.DarthChungo.VoidTeleport.VoidTeleport
+
+commands: []
