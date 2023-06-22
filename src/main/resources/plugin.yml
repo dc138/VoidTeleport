@@ -6,6 +6,10 @@ description: Minecraft Spigot plugin for preventing players from falling into th
 main: me.DarthChungo.VoidTeleport.VoidTeleport
 api-version: '1.13'
 
-commands: {}
+commands:
+  voidteleport:
+    description: set and test the void teleport location
+    aliases:
+      - vtp
 
 permissions: {}
