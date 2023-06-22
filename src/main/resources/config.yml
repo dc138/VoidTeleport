@@ -1,0 +1,8 @@
+# Spawn location to teleport players to
+# Set this to 'null' to disable
+spawn: 'null'
+
+# Height below which players are considered to be in the void
+# You might need to change this when running a server in 1.18
+# and later
+void_height: 0
