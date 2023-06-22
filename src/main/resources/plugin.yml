@@ -12,5 +12,11 @@ commands:
     usage: 'Usage: /<command> [reload|set|test]'
     aliases:
       - vtp
+    permission: voidteleport.manage
+    permission-message: "§cYou don't have permission to use this command."
 
-permissions: {}
+permissions:
+  voidteleport.manage:
+    description: "Allows you to manage the plugin with /voidteleport"
+    default: op
+
