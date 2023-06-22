@@ -1,7 +1,7 @@
 name: VoidTeleport
 version: 1.0.0
 author: DarthChungo
-description: An empty example plugin for Spigot with Gradle
+description: Minecraft Spigot plugin for preventing players from falling into the void
 
 main: me.DarthChungo.VoidTeleport.VoidTeleport
 api-version: '1.13'
