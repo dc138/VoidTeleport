@@ -3,6 +3,6 @@
 spawn: 'null'
 
 # Height below which players are considered to be in the void
-# You might need to change this when running a server in 1.18
-# and later
+# You might want to change this when running a server in 1.18 or later
+# Also useful if your lobby is built very high, to reduce waiting
 void_height: 0

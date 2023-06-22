@@ -18,7 +18,7 @@ class VoidTeleportEvent implements Listener {
   public void onMove(PlayerMoveEvent e) {
     Player player = e.getPlayer();
 
-    if (player.getLocation().getY() < plugin.void_height) {
+    if (player.getLocation().getY() < plugin.config.getVoidHeight()) {
       plugin.teleportPlayer(player);
     }
   }
