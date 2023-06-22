@@ -11,9 +11,9 @@ import org.bukkit.command.TabExecutor;
 import org.bukkit.entity.Player;
 
 public class VoidTeleportCommand implements TabExecutor {
-  private static final String COMMAND = "voidteleport";
-
   private final VoidTeleport plugin;
+
+  private static final String COMMAND = "voidteleport";
 
   public VoidTeleportCommand(VoidTeleport p) {
     plugin = p;
@@ -33,7 +33,8 @@ public class VoidTeleportCommand implements TabExecutor {
       return false;
 
     } else if (args[0].equals("reload")) {
-      player.sendMessage(ChatColor.RED + "TODO!");
+      plugin.reload();
+      player.sendMessage("Plugin configuration reloaded");
       return true;
 
     } else if (args[0].equals("set")) {

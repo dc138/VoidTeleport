@@ -1,5 +1,8 @@
 package me.DarthChungo.VoidTeleport;
 
+import java.io.File;
+import java.util.logging.Level;
+
 import org.bukkit.Location;
 import org.bukkit.World;
 
@@ -13,10 +16,26 @@ class VoidTeleportConfig {
 
   VoidTeleportConfig(VoidTeleport p) {
     plugin = p;
-    plugin.saveDefaultConfig();
+    load();
   }
 
-  void save() {
+  public void load() {
+    File file = new File(plugin.getDataFolder(), "config.yml");
+
+    if (!file.exists()) {
+      plugin.saveDefaultConfig();
+    }
+
+    try {
+      plugin.getConfig().load(file);
+
+    } catch (Exception e) {
+      plugin.getLogger().log(Level.SEVERE, "Cannot load config file: ", e);
+      return;
+    }
+  }
+
+  public void save() {
     plugin.saveConfig();
   }
 
@@ -56,5 +75,6 @@ class VoidTeleportConfig {
                        + SEPARATOR + location.getYaw()
                        + SEPARATOR + location.getPitch();
     plugin.getConfig().set(SPAWN_LOCATION_PATH, serialized);
+    save();
   }
 }

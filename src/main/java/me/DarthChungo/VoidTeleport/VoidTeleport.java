@@ -30,4 +30,8 @@ public class VoidTeleport extends JavaPlugin {
   public void onDisable() {
     config.save();
   }
+
+  public void reload() {
+    config.load();
+  }
 }
