@@ -1,3 +1,2 @@
-.gradle/
 .vim/
-build/
+target/
