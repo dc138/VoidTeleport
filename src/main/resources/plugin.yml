@@ -1,7 +1,11 @@
 name: VoidTeleport
 version: 1.0.0
+author: DarthChungo
 description: An empty example plugin for Spigot with Gradle
 
 main: me.DarthChungo.VoidTeleport.VoidTeleport
+api-version: '1.13'
 
 commands: {}
+
+permissions: {}
