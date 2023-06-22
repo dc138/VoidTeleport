@@ -1,8 +1,10 @@
 # VoidTeleport
 
 Minecraft Spigot plugin for preventing players from falling into the void on hub / lobby servers.
-Supports bukkit, spigot, and paper builds from minecraft version `1.13` to the latest available server version.
-Other forks have not been tested, but due to the plugin's simplicity it will most likely work out of the box.
+Tested support includes bukkit, spigot, and paper builds from minecraft version `1.13` to `1.20`.
+Support for newer server versions, and other forks have not been tested, but due to the plugin's simplicity it will most likely work out of the box.
+
+Note: this plugin does not collect any kind of statistics through `bStats` or any other custom telemetry / statistics server; and never will.
 
 ## Usage
 
