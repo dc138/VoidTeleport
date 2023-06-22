@@ -1,6 +1,37 @@
 # VoidTeleport
 
 Minecraft Spigot plugin for preventing players from falling into the void on hub / lobby servers.
+Supports bukkit, spigot, and paper builds from minecraft version `1.13` to the latest available server version.
+Other forks have not been tested, but due to the plugin's simplicity it will most likely work out of the box.
+
+## Usage
+
+This plugin is very simple.
+Firstly, a server administrator uses the `voidteleport` command to setup the spawn location.
+Then, all players who fall into the void (height under a configurable threshold), are automatically teleported there.
+Configuration is persisted in a `config.yml` file under `plugins/VoidTeleport/`.
+
+### Commands
+
+`/voidteleport`, or `/vtp`: manage the plugin.
+Usage: `/<command> [reload|set|test]`.
+  - `reload`: reloads the configuration.
+  - `set`: sets the spawn location to your current location and orientation.
+  - `test`: test the spawn location by teleporting you to it.
+
+### Configuration
+
+The following configuration entries are used:
+
+- `spawn`: configured spawn world, location, and orientation for players.
+- `void_height`: height below which players are considered to be in the void.
+
+Remember to use `/vtp reload` after making configuration changes.
+Possible config options are documented more in depth in the config file itself.
+
+### Permission nodes
+
+- `voidteleport.manage`: full access to the `/vtp` command and subcommands. Given to server operators by default.
 
 ## License
 
