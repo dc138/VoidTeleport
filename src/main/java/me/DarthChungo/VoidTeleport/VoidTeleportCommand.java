@@ -17,7 +17,6 @@ public class VoidTeleportCommand implements TabExecutor {
 
   public VoidTeleportCommand(VoidTeleport p) {
     plugin = p;
-
     plugin.getCommand(COMMAND).setExecutor(this);
   }
 
