@@ -8,7 +8,8 @@ api-version: '1.13'
 
 commands:
   voidteleport:
-    description: set and test the void teleport location
+    description: Manage the VoidTeleport plugin
+    usage: 'Usage: /<command> [reload|set|test]'
     aliases:
       - vtp
 

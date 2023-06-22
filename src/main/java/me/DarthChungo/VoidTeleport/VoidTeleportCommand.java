@@ -25,11 +25,27 @@ public class VoidTeleportCommand implements TabExecutor {
   public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
     if (!(sender instanceof Player)) {
       sender.sendMessage(ChatColor.RED + "You must be a player to use this command");
-      return false;
+      return true;
     }
 
     Player player = (Player) sender;
-    player.sendMessage(ChatColor.GREEN + "TODO!");
+
+    if (args.length != 1) {
+      return false;
+
+    } else if (args[0].equals("reload")) {
+      player.sendMessage(ChatColor.RED + "TODO!");
+      return true;
+
+    } else if (args[0].equals("set")) {
+      plugin.spawn_location = player.getLocation();
+      player.sendMessage("Set spawn location to your current location");
+      return true;
+
+    } else if (args[0].equals("test")) {
+      player.sendMessage(plugin.teleportPlayer(player) ? "Teleported you to spawn location" : ChatColor.RED + "Spawn location is not set");
+      return true;
+    }
 
     return true;
   }
