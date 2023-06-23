@@ -39,6 +39,7 @@ public class VoidTeleportCommand implements TabExecutor {
 
     } else if (args[0].equals("set")) {
       plugin.config.setSpawnLocation(player.getLocation());
+      plugin.config.save();
       player.sendMessage("Set spawn location to your current location");
       return true;
 

@@ -24,6 +24,8 @@ public class VoidTeleport extends JavaPlugin {
     command = new VoidTeleportCommand(this);
     event = new VoidTeleportEvent(this);
     config = new VoidTeleportConfig(this);
+
+    config.load();
   }
 
   @Override

@@ -6,3 +6,9 @@ spawn: 'null'
 # You might want to change this when running a server in 1.18 or later
 # Also useful if your lobby is built very high, to reduce the falling distance
 void_height: 0
+
+# Should players be given void damage when teleporting them back to spawn?
+# Useful for plugins that use void damage for detecting if a player has fallen the void
+# This allows you, for example, to teleport the player to the last checkpoint when using
+# the Parkour plugin
+damage: true
