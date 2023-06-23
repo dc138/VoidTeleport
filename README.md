@@ -1,6 +1,7 @@
 # VoidTeleport
 
 Minecraft Spigot plugin for preventing players from falling into the void on hub / lobby servers.
+Allows you to run custom commands as the player being teleported.
 Tested support includes bukkit, spigot, and paper builds from minecraft version `1.13` to `1.20`.
 Support for newer server versions, and other forks have not been tested, but due to the plugin's simplicity it will most likely work out of the box.
 
@@ -27,6 +28,9 @@ The following configuration entries are used:
 
 - `spawn`: configured spawn world, location, and orientation for players.
 - `void_height`: height below which players are considered to be in the void.
+- `command`: optional command to run when teleporting a player. You may use `%player%` as a placeholder for the player's name
+- `caller`: who to call the custom command as. Supports `player` and `console`.
+- `hide_output`: whether to try and hide the output of the command when calling it as the player **only**. *Warning*: using this option will not work on vanilla commands.
 
 Remember to use `/vtp reload` after making configuration changes.
 Possible config options are documented more in depth in the config file itself.
