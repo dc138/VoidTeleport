@@ -16,7 +16,9 @@ class VoidTeleportConfig {
 
   private static final String VOID_HEIGHT_PATH = "void_height";
   private static final String SPAWN_LOCATION_PATH = "spawn";
-  private static final String DAMAGE_PATH = "damage";
+  private static final String COMMAND_PATH = "command";
+  private static final String CALLER_PATH = "caller";
+  private static final String HIDE_OUTPUT_PATH = "hide_output";
 
   private static final String SEPARATOR = ";";
 
@@ -43,9 +45,15 @@ class VoidTeleportConfig {
 
     Location location = getSpawnLocation();
     Integer height = getVoidHeight();
-    Boolean damage = getDamage();
+    String command = getCommand();
+    String caller = getCaller();
+    Boolean hide = getHideOutput();
 
-    if (location != null && height != null && damage != null) {
+    if (isSpawnLocationValid()
+        && isCommandValid()
+        && isCallerValid()
+        && isVoidHeightValid()
+        && isHideOutputValid()) {
       return;
     }
 
@@ -64,7 +72,9 @@ class VoidTeleportConfig {
 
     setSpawnLocation(location == null ? null : location);
     setVoidHeight(height == null ? 0 : height);
-    setDamage(damage == null ? false : damage);
+    setCommand(command == null ? "" : command);
+    setCaller(caller == null ? "console" : caller);
+    setHideOutput(hide == null ? false : hide);
 
     save();
   }
@@ -79,29 +89,49 @@ class VoidTeleportConfig {
     }
   }
 
-  public Boolean getDamage() {
-    return config.isBoolean(DAMAGE_PATH) ? config.getBoolean(DAMAGE_PATH) : null;
+  public String getCommand() {
+    String command = config.getString(COMMAND_PATH);
+    return isCommandValid() && !command.equals("") ? command : null;
   }
 
-  public void setDamage(Boolean value) {
-    config.set(DAMAGE_PATH, value);
+  public void setCommand(String value) {
+    config.set(COMMAND_PATH, value);
+  }
+
+  public boolean isCommandValid() {
+    return config.isString(COMMAND_PATH);
+  }
+
+  public String getCaller() {
+    return isCallerValid() ? config.getString(CALLER_PATH) : null;
+  }
+
+  public void setCaller(String caller) {
+    config.set(CALLER_PATH, caller);
+  }
+
+  public boolean isCallerValid() {
+    String caller = config.getString(CALLER_PATH);
+    return config.isString(CALLER_PATH) && (caller.equals("player") || caller.equals("console"));
   }
 
   public Integer getVoidHeight() {
-    return config.isInt(VOID_HEIGHT_PATH) ? config.getInt(VOID_HEIGHT_PATH, 0) : null;
+    return isVoidHeightValid() ? config.getInt(VOID_HEIGHT_PATH, 0) : null;
   }
 
   public void setVoidHeight(Integer height) {
     config.set(VOID_HEIGHT_PATH, height);
   }
 
+  public boolean isVoidHeightValid() {
+    return config.isInt(VOID_HEIGHT_PATH);
+  }
+
   public Location getSpawnLocation() {
-    String str = config.getString(SPAWN_LOCATION_PATH, "null");
+    String str = config.getString(SPAWN_LOCATION_PATH);
     String[] fields = str.split(SEPARATOR);
 
-    if (str.equals("null") || fields.length != 6) {
-      return null;
-    }
+    if (str.equals("null") || fields.length != 6) return null;
 
     World world;
     Double x, y, z;
@@ -131,6 +161,24 @@ class VoidTeleportConfig {
                        + SEPARATOR + location.getZ()
                        + SEPARATOR + location.getYaw()
                        + SEPARATOR + location.getPitch();
+
     config.set(SPAWN_LOCATION_PATH, serialized);
+  }
+
+  public boolean isSpawnLocationValid() {
+    String location = config.getString(SPAWN_LOCATION_PATH);
+    return location != null && (location.equals("null") || location.split(SEPARATOR).length == 6);
+  }
+
+  public Boolean getHideOutput() {
+    return isHideOutputValid() ? config.getBoolean(HIDE_OUTPUT_PATH) : null;
+  }
+
+  public void setHideOutput(Boolean value) {
+    config.set(HIDE_OUTPUT_PATH, value);
+  }
+
+  public boolean isHideOutputValid() {
+    return config.isBoolean(HIDE_OUTPUT_PATH);
   }
 }

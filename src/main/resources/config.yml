@@ -7,8 +7,20 @@ spawn: 'null'
 # Also useful if your lobby is built very high, to reduce the falling distance
 void_height: 0
 
-# Should players be given void damage when teleporting them back to spawn?
-# Useful for plugins that use void damage for detecting if a player has fallen the void
-# This allows you, for example, to teleport the player to the last checkpoint when using
-# the Parkour plugin
-damage: true
+# Custom command to run when players are teleported
+# Use %player% as a placeholder for the player's name
+# Do not include the leading '/' in the command
+# Set to '' to disable
+command: ''
+
+# Who to call the custom command as
+# Available values are:
+# - player: calls the command as the player being teleported
+# - console: calls the command as the server's console
+caller: player
+
+# Whether or not to try and hide the output of the command to the **player**
+# Please note that this method involves some hacky code, and will **not** work for vanilla commands
+# Plugin commands should be fine though, but some might break too
+# Only implemened when caller is set to 'player'
+hide_output: true
